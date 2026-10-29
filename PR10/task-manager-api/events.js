@@ -11,8 +11,6 @@ function logEventFailure(error) {
   }
 }
 
-// captureRejections routes rejected async listeners to this registered handler.
-// Never emit EventEmitter's special "error" event from API code.
 taskEvents.on('error', logEventFailure)
 
 export function emitTaskEvent(eventName, payload) {

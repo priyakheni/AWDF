@@ -5,7 +5,7 @@ function reportNotificationFailure(eventName, error, logger) {
   try {
     logger.error(message)
   } catch {
-    // Even a broken logger must not affect an already-completed API response.
+
   }
 }
 
