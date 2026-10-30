@@ -1,10 +1,16 @@
 
-name: Task Management CI Pipeline
+name: TaskFlow CI
 
 on:
   push:
     branches:
       - main
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
 
 jobs:
   backend-test:
@@ -13,7 +19,7 @@ jobs:
 
     defaults:
       run:
-     working-directory: PR12/task-management/backend
+        working-directory: PR12/task-management/backend
 
     steps:
       - name: Checkout repository
@@ -23,9 +29,11 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
+          cache: npm
+          cache-dependency-path: PR12/task-management/backend/package-lock.json
 
       - name: Install backend dependencies
-        run: npm install
+        run: npm ci
 
       - name: Run backend tests
         run: npm test
@@ -36,7 +44,7 @@ jobs:
 
     defaults:
       run:
-    working-directory: PR12/task-management/frontend
+        working-directory: PR12/task-management/frontend
 
     steps:
       - name: Checkout repository
@@ -46,9 +54,11 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
+          cache: npm
+          cache-dependency-path: PR12/task-management/frontend/package-lock.json
 
       - name: Install frontend dependencies
-        run: npm install
+        run: npm ci
 
       - name: Build frontend
         run: npm run build
