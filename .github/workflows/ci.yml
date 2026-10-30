@@ -13,7 +13,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: PR12/backend
+     working-directory: PR12/task-management/backend
 
     steps:
       - name: Checkout repository
@@ -36,7 +36,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: PR12/frontend
+    working-directory: PR12/task-management/frontend
 
     steps:
       - name: Checkout repository
