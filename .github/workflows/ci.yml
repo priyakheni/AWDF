@@ -8,14 +8,15 @@ on:
 
 jobs:
   backend-test:
+    name: Backend Tests
     runs-on: ubuntu-latest
 
     defaults:
       run:
-        working-directory: PR11/backend
+        working-directory: PR12/backend
 
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Setup Node.js
@@ -23,21 +24,22 @@ jobs:
         with:
           node-version: 22
 
-      - name: Install dependencies
+      - name: Install backend dependencies
         run: npm install
 
-      - name: Run tests
+      - name: Run backend tests
         run: npm test
 
   frontend-build:
+    name: Frontend Build
     runs-on: ubuntu-latest
 
     defaults:
       run:
-        working-directory: PR11/frontend
+        working-directory: PR12/frontend
 
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Setup Node.js
@@ -45,7 +47,7 @@ jobs:
         with:
           node-version: 22
 
-      - name: Install dependencies
+      - name: Install frontend dependencies
         run: npm install
 
       - name: Build frontend
